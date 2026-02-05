@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PulseNet | Hospital Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <h2>PulseNet</h2>
+        <ul>
+            <li class="active">Dashboard</li>
+            <li>Patients</li>
+            <li>Monitoring</li>
+            <li>Alerts</li>
+            <li>Doctors</li>
+            <li>Notifications</li>
+            <li>Payments</li>
+            <li>Admin</li>
+        </ul>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+            <h1>Hospital Patient Monitoring System</h1>
+            <span class="status">Backend: <b>Not Connected</b></span>
+        </header>
+
+        <!-- DASHBOARD OVERVIEW -->
+        <section class="overview">
+            <div class="stat-card">
+                <h4>Total Patients</h4>
+                <p data-api="patients/count">--</p>
+            </div>
+            <div class="stat-card danger">
+                <h4>Critical Alerts</h4>
+                <p data-api="alerts/critical">--</p>
+            </div>
+            <div class="stat-card">
+                <h4>Doctors On Duty</h4>
+                <p data-api="doctors/active">--</p>
+            </div>
+            <div class="stat-card">
+                <h4>Pending Payments</h4>
+                <p data-api="payments/pending">--</p>
+            </div>
+        </section>
+
+        <!-- USER ROLES -->
+        <section class="module">
+            <h2>User Roles</h2>
+            <div class="tags">
+                <span>Patient</span>
+                <span>Nurse / Attendant</span>
+                <span>Doctor</span>
+                <span>Pharmacy</span>
+                <span>Administrator</span>
+            </div>
+        </section>
+
+        <!-- PATIENT INFO -->
+        <section class="module">
+            <h2>Patient Information Module</h2>
+            <p>
+                Displays patient profiles, medical history, admission details,
+                assigned doctors, ward information, and ongoing treatments.
+            </p>
+            <small>API: <code>/api/patients</code></small>
+        </section>
+
+        <!-- MONITORING -->
+        <section class="module">
+            <h2>Patient Monitoring by Staff</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Patient</th>
+                        <th>Pulse</th>
+                        <th>BP</th>
+                        <th>Temperature</th>
+                        <th>Oxygen</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="placeholder">
+                        <td colspan="6">Live vitals will be fetched from backend</td>
+                    </tr>
+                </tbody>
+            </table>
+            <small>API: <code>/api/vitals</code></small>
+        </section>
+
+        <!-- ALERTS -->
+        <section class="module alert">
+            <h2>Warning Signs & Alerts</h2>
+            <ul>
+                <li>Vitals analyzed for abnormal values</li>
+                <li>Alerts generated when thresholds crossed</li>
+                <li>Displayed in real-time on dashboard</li>
+            </ul>
+            <small>API: <code>/api/alerts</code></small>
+        </section>
+
+        <!-- DOCTOR ACCESS -->
+        <section class="module">
+            <h2>Doctor Access & Visits</h2>
+            <ul>
+                <li>Remote access to patient records</li>
+                <li>Scheduled & emergency physical visits</li>
+                <li>Diagnosis and treatment updates</li>
+            </ul>
+            <small>API: <code>/api/doctors</code></small>
+        </section>
+
+        <!-- TRIGGERS -->
+        <section class="module trigger">
+            <h2>Triggers & Notifications</h2>
+            <ul>
+                <li>Triggers activated during critical condition</li>
+                <li>Automatic notifications sent</li>
+                <li>Ensures fast emergency response</li>
+            </ul>
+            <small>API: <code>/api/notifications</code></small>
+        </section>
+
+        <!-- PAYMENTS -->
+        <section class="module payment">
+            <h2>Payment System</h2>
+            <ul>
+                <li>Billing and payment records</li>
+                <li>Treatment, medicine & stay charges</li>
+                <li>Status visible to patient & admin</li>
+            </ul>
+            <small>API: <code>/api/payments</code></small>
+        </section>
+
+    </main>
+</div>
+
+</body>
+</html>
