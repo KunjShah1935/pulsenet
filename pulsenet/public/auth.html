@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PulseNet — Create Your Account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --pulse: #0c87ea;
+            --pulse-2: #0069c9;
+            --pulse-3: #36a3f9;
+            --pulse-glow: rgba(12, 135, 234, 0.15);
+            --bg: #f1f5f9;
+            --surface: #ffffff;
+            --surface2: #f8fafc;
+            --border: rgba(15, 23, 42, 0.09);
+            --border2: rgba(15, 23, 42, 0.15);
+            --text: #0f172a;
+            --text2: #475569;
+            --text3: #94a3b8;
+            --input-bg: #f8fafc;
+            --error: #e11d48;
+            --success: #059669;
+        }
+
+        html.dark {
+            --bg: #07101c;
+            --surface: #0f1929;
+            --surface2: #111e2e;
+            --border: rgba(255, 255, 255, 0.07);
+            --border2: rgba(255, 255, 255, 0.13);
+            --text: #f0f6ff;
+            --text2: #7fa8c9;
+            --text3: #3d6380;
+            --input-bg: #0d1520;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        /* ── LEFT PANEL ── */
+        .left-panel {
+            width: 48%;
+            background: linear-gradient(150deg, #0c4a7a 0%, #0c87ea 55%, #36a3f9 100%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px;
+            overflow: hidden;
+        }
+
+        html.dark .left-panel {
+            background: linear-gradient(150deg, #040e1c 0%, #0a2d52 55%, #0c4f8a 100%);
+        }
+
+        .left-pattern {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+            background-size: 26px 26px;
+            pointer-events: none;
+        }
+
+        .left-glow {
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .left-glow-2 {
+            position: absolute;
+            top: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .left-top {
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            margin-bottom: 56px;
+        }
+
+        .brand-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 11px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-icon svg {
+            width: 19px;
+            height: 19px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+        }
+
+        .brand-name {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            color: #fff;
+            letter-spacing: -0.3px;
+        }
+
+        .left-headline {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: clamp(32px, 3.5vw, 52px);
+            color: #fff;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+        }
+
+        .left-sub {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.72);
+            line-height: 1.65;
+            max-width: 380px;
+            margin-bottom: 40px;
+        }
+
+        .left-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            max-width: 400px;
+        }
+
+        .left-stat {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+
+        .left-stat-num {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .left-stat-lbl {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 2px;
+            font-weight: 500;
+        }
+
+        /* Mini role cards */
+        .role-pills {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .role-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 99px;
+            padding: 6px 12px 6px 8px;
+        }
+
+        .rp-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .rp-text {
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* ── RIGHT PANEL ── */
+        .right-panel {
+            width: 52%;
+            margin-left: 48%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 32px;
+            position: relative;
+        }
+
+        .right-top-bar {
+            position: fixed;
+            top: 0;
+            left: 48%;
+            right: 0;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 32px;
+            gap: 12px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            z-index: 50;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .theme-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 9px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            color: var(--text2);
+        }
+
+        .theme-btn:hover {
+            background: var(--border);
+            color: var(--text);
+        }
+
+        .theme-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .signin-link {
+            font-size: 13px;
+            color: var(--text2);
+        }
+
+        .signin-link a {
+            color: var(--pulse);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .signin-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── FORM CARD ── */
+        .form-container {
+            width: 100%;
+            max-width: 440px;
+            padding-top: 64px;
+        }
+
+        .tab-row {
+            display: flex;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 28px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 9px;
+            border: none;
+            border-radius: 9px;
+            background: none;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text3);
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: var(--surface);
+            color: var(--text);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        html.dark .tab-btn.active {
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-heading {
+            margin-bottom: 28px;
+        }
+
+        .form-heading h1 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 28px;
+            color: var(--text);
+            letter-spacing: -0.8px;
+            margin-bottom: 6px;
+        }
+
+        .form-heading p {
+            font-size: 14px;
+            color: var(--text2);
+        }
+
+        /* Social buttons */
+        .social-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: var(--surface);
+            border: 1px solid var(--border2);
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            transition: all 0.2s;
+        }
+
+        .social-btn:hover {
+            background: var(--surface2);
+            border-color: var(--border2);
+            transform: translateY(-1px);
+        }
+
+        .social-btn svg {
+            width: 17px;
+            height: 17px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border2);
+        }
+
+        .divider-text {
+            font-size: 12px;
+            color: var(--text3);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        /* Form fields */
+        .field-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .field-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text2);
+            letter-spacing: 0.01em;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: var(--text3);
+            stroke-width: 2;
+            stroke-linecap: round;
+            pointer-events: none;
+            transition: stroke 0.2s;
+        }
+
+        input[type=text],
+        input[type=email],
+        input[type=password],
+        input[type=tel],
+        select {
+            width: 100%;
+            padding: 11px 13px 11px 40px;
+            background: var(--input-bg);
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+            -webkit-appearance: none;
+        }
+
+        input::placeholder {
+            color: var(--text3);
+        }
+
+        select {
+            padding-left: 40px;
+            cursor: pointer;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--pulse);
+            background: var(--surface);
+            box-shadow: 0 0 0 3px rgba(12, 135, 234, 0.12);
+        }
+
+        input:focus+.input-icon,
+        .input-wrap:focus-within .input-icon {
+            stroke: var(--pulse);
+        }
+
+        .input-wrap:focus-within .input-icon {
+            stroke: var(--pulse);
+        }
+
+        input.error {
+            border-color: var(--error) !important;
+        }
+
+        .field-error {
+            font-size: 11px;
+            color: var(--error);
+            font-weight: 500;
+            display: none;
+        }
+
+        .field-error.show {
+            display: block;
+        }
+
+        .password-wrap {
+            position: relative;
+        }
+
+        .pwd-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text3);
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s;
+        }
+
+        .pwd-toggle:hover {
+            color: var(--text);
+        }
+
+        .pwd-toggle svg {
+            width: 15px;
+            height: 15px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        /* Role selector */
+        .role-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        .role-option {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .role-option input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .role-option-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 12px 8px;
+            background: var(--input-bg);
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .role-option input:checked+.role-option-label {
+            border-color: var(--pulse);
+            background: rgba(12, 135, 234, 0.06);
+            box-shadow: 0 0 0 3px rgba(12, 135, 234, 0.1);
+        }
+
+        .role-option:hover .role-option-label {
+            border-color: var(--border2);
+            background: var(--surface2);
+        }
+
+        .rol-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .rol-name {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text2);
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .role-option input:checked+.role-option-label .rol-name {
+            color: var(--pulse);
+        }
+
+        /* Password strength */
+        .strength-bar {
+            display: flex;
+            gap: 4px;
+            margin-top: 6px;
+        }
+
+        .strength-seg {
+            flex: 1;
+            height: 3px;
+            border-radius: 2px;
+            background: var(--border2);
+            transition: background 0.3s;
+        }
+
+        .strength-text {
+            font-size: 11px;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* Checkbox */
+        .checkbox-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checkbox-wrap {
+            position: relative;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .checkbox-wrap input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .checkbox-custom {
+            width: 18px;
+            height: 18px;
+            border: 1.5px solid var(--border2);
+            border-radius: 5px;
+            background: var(--input-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .checkbox-wrap input:checked+.checkbox-custom {
+            background: var(--pulse);
+            border-color: var(--pulse);
+        }
+
+        .checkbox-custom svg {
+            width: 11px;
+            height: 11px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            display: none;
+        }
+
+        .checkbox-wrap input:checked+.checkbox-custom svg {
+            display: block;
+        }
+
+        .checkbox-text {
+            font-size: 13px;
+            color: var(--text2);
+            line-height: 1.5;
+        }
+
+        .checkbox-text a {
+            color: var(--pulse);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .checkbox-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Submit button */
+        .submit-btn {
+            width: 100%;
+            padding: 13px;
+            background: var(--pulse);
+            color: #fff;
+            border: none;
+            border-radius: 11px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 18px rgba(12, 135, 234, 0.32);
+            margin-bottom: 20px;
+        }
+
+        .submit-btn:hover {
+            background: var(--pulse-2);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 24px rgba(12, 135, 234, 0.42);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn svg {
+            width: 17px;
+            height: 17px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Success state */
+        .success-card {
+            text-align: center;
+            padding: 40px 20px;
+            display: none;
+        }
+
+        .success-card.show {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .success-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(5, 150, 105, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4px;
+        }
+
+        .success-icon svg {
+            width: 36px;
+            height: 36px;
+            fill: none;
+            stroke: var(--success);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .success-card h2 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 26px;
+            color: var(--text);
+            letter-spacing: -0.5px;
+        }
+
+        .success-card p {
+            font-size: 14px;
+            color: var(--text2);
+            max-width: 320px;
+            line-height: 1.6;
+        }
+
+        .success-card a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            padding: 12px 28px;
+            background: var(--pulse);
+            color: #fff;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .success-card a:hover {
+            background: var(--pulse-2);
+            transform: translateY(-1px);
+        }
+
+        /* Bottom text */
+        .bottom-text {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text3);
+        }
+
+        .bottom-text a {
+            color: var(--pulse);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .bottom-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Signin specific */
+        .forgot-row {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: -8px;
+        }
+
+        .forgot-link {
+            font-size: 12px;
+            color: var(--pulse);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-container {
+            animation: fadeIn 0.4s ease;
+        }
+
+        .panel-content {
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 860px) {
+            .left-panel {
+                display: none;
+            }
+
+            .right-panel {
+                width: 100%;
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .right-top-bar {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- LEFT PANEL -->
+    <div class="left-panel">
+        <div class="left-pattern"></div>
+        <div class="left-glow"></div>
+        <div class="left-glow-2"></div>
+
+        <div class="left-top">
+            <a href="landing.html" class="brand">
+                <div class="brand-icon">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                    </svg>
+                </div>
+                <span class="brand-name">PulseNet</span>
+            </a>
+
+            <div class="left-headline">Healthcare<br>management<br>for everyone</div>
+            <p class="left-sub">Join 500+ hospitals using PulseNet to connect doctors, nurses, pharmacy, lab, and admin
+                in one unified platform.</p>
+
+            <div class="left-stats">
+                <div class="left-stat">
+                    <div class="left-stat-num">500+</div>
+                    <div class="left-stat-lbl">Hospitals</div>
+                </div>
+                <div class="left-stat">
+                    <div class="left-stat-num">2M+</div>
+                    <div class="left-stat-lbl">Patients</div>
+                </div>
+                <div class="left-stat">
+                    <div class="left-stat-num">99.9%</div>
+                    <div class="left-stat-lbl">Uptime</div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <p
+                style="font-size:12px;color:rgba(255,255,255,0.5);font-weight:600;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:12px;position:relative;z-index:1">
+                Role-based access for:</p>
+            <div class="role-pills">
+                <div class="role-pill">
+                    <div class="rp-dot" style="background:#f43f5e"></div><span class="rp-text">Admin</span>
+                </div>
+                <div class="role-pill">
+                    <div class="rp-dot" style="background:#36a3f9"></div><span class="rp-text">Doctor</span>
+                </div>
+                <div class="role-pill">
+                    <div class="rp-dot" style="background:#2dd4bf"></div><span class="rp-text">Nurse</span>
+                </div>
+                <div class="role-pill">
+                    <div class="rp-dot" style="background:#c084fc"></div><span class="rp-text">Patient</span>
+                </div>
+                <div class="role-pill">
+                    <div class="rp-dot" style="background:#fbbf24"></div><span class="rp-text">Pharmacy</span>
+                </div>
+                <div class="role-pill">
+                    <div class="rp-dot" style="background:#34d399"></div><span class="rp-text">Laboratory</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT TOP BAR -->
+    <div class="right-top-bar">
+        <button class="theme-btn" onclick="toggleTheme()" title="Toggle theme">
+            <svg id="theme-icon" viewBox="0 0 24 24">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
+        <div class="form-container">
+
+            <!-- TABS -->
+            <div class="tab-row">
+                <button class="tab-btn active" id="tab-signup" onclick="switchTab('signup')">Create Account</button>
+                <button class="tab-btn" id="tab-signin" onclick="switchTab('signin')">Sign In</button>
+            </div>
+
+            <!-- SIGNUP FORM -->
+            <div id="form-signup" class="panel-content">
+                <!-- <div class="form-heading">
+        <h1>Create your account</h1>
+        <p>Start your free 30-day trial. No credit card required.</p>
+      </div> -->
+
+                <!-- <div class="social-row">
+        <button class="social-btn" onclick="handleSocial()">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          Continue with Google
+        </button>
+        
+      </div>
+
+      <div class="divider">
+        <div class="divider-line"></div>
+        <span class="divider-text">or sign up with email</span>
+        <div class="divider-line"></div>
+      </div> -->
+
+                <div class="field-group">
+                    <!-- Name row -->
+                    <div class="field">
+                        <label for="fullname">Full Name</label>
+                        <div class="input-wrap">
+                            <svg class="input-icon" viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                <circle cx="12" cy="7" r="4" />
+                            </svg>
+                            <input type="text" id="fullname" placeholder="Aarav Mehta" autocomplete="name" />
+                        </div>
+                        <span class="field-error" id="fullname-err">Please enter your full name</span>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="field">
+                        <label for="email">Email Address</label>
+                        <div class="input-wrap">
+                            <svg class="input-icon" viewBox="0 0 24 24">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            <input type="email" id="email" placeholder="aarav@hospital.in" autocomplete="email" />
+                        </div>
+                        <span class="field-error" id="email-err">Please enter a valid email</span>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="field">
+                        <label for="phone">Phone Number</label>
+                        <div class="input-wrap">
+                            <svg class="input-icon" viewBox="0 0 24 24">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                            <input type="tel" id="phone" placeholder="+91 98765 43210" autocomplete="tel" />
+                        </div>
+                    </div>
+
+                    <!-- Role -->
+                    <div class="field">
+                        <label>Select Your Role</label>
+                        <div class="role-selector">
+                            <label class="role-option">
+                                <input type="radio" name="role" value="admin" />
+                                <div class="role-option-label">
+                                    <div class="rol-icon" style="background:linear-gradient(135deg,#f43f5e,#e11d48)">AD
+                                    </div>
+                                    <span class="rol-name">Admin</span>
+                                </div>
+                            </label>
+                            <label class="role-option">
+                                <input type="radio" name="role" value="doctor" checked />
+                                <div class="role-option-label">
+                                    <div class="rol-icon" style="background:linear-gradient(135deg,#0c87ea,#0069c9)">DR
+                                    </div>
+                                    <span class="rol-name">Doctor</span>
+                                </div>
+                            </label>
+                            <label class="role-option">
+                                <input type="radio" name="role" value="nurse" />
+                                <div class="role-option-label">
+                                    <div class="rol-icon" style="background:linear-gradient(135deg,#14b8a6,#0d9488)">NR
+                                    </div>
+                                    <span class="rol-name">Nurse</span>
+                                </div>
+                            </label>
+                            <label class="role-option">
+                                <input type="radio" name="role" value="patient" />
+                                <div class="role-option-label">
+                                    <div class="rol-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed)">PT
+                                    </div>
+                                    <span class="rol-name">Patient</span>
+                                </div>
+                            </label>
+                            <label class="role-option">
+                                <input type="radio" name="role" value="pharmacy" />
+                                <div class="role-option-label">
+                                    <div class="rol-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)">PH
+                                    </div>
+                                    <span class="rol-name">Pharmacy</span>
+                                </div>
+                            </label>
+                            <label class="role-option">
+                                <input type="radio" name="role" value="lab" />
+                                <div class="role-option-label">
+                                    <div class="rol-icon" style="background:linear-gradient(135deg,#10b981,#059669)">LB
+                                    </div>
+                                    <span class="rol-name">Laboratory</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <div class="input-wrap password-wrap">
+                            <svg class="input-icon" viewBox="0 0 24 24">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                            </svg>
+                            <input type="password" id="password" placeholder="Min. 8 characters"
+                                oninput="checkStrength(this.value)" />
+                            <button class="pwd-toggle" type="button" onclick="togglePwd('password', this)"
+                                tabindex="-1">
+                                <svg viewBox="0 0 24 24" id="eye-signup">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="strength-bar" id="strength-bar">
+                            <div class="strength-seg" id="s1"></div>
+                            <div class="strength-seg" id="s2"></div>
+                            <div class="strength-seg" id="s3"></div>
+                            <div class="strength-seg" id="s4"></div>
+                        </div>
+                        <div class="strength-text" id="strength-text" style="color:var(--text3)">Enter a password</div>
+                        <span class="field-error" id="pwd-err">Password must be at least 8 characters</span>
+                    </div>
+
+                    <!-- Confirm password -->
+                    <div class="field">
+                        <label for="confirm-pwd">Confirm Password</label>
+                        <div class="input-wrap password-wrap">
+                            <svg class="input-icon" viewBox="0 0 24 24">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                            </svg>
+                            <input type="password" id="confirm-pwd" placeholder="Repeat password" />
+                            <button class="pwd-toggle" type="button" onclick="togglePwd('confirm-pwd', this)"
+                                tabindex="-1">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                            </button>
+                        </div>
+                        <span class="field-error" id="cpwd-err">Passwords do not match</span>
+                    </div>
+
+                    <!-- T&C -->
+                    <div class="checkbox-row">
+                        <div class="checkbox-wrap">
+                            <input type="checkbox" id="terms" />
+                            <div class="checkbox-custom" onclick="document.getElementById('terms').click()">
+                                <svg viewBox="0 0 24 24">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="checkbox-text">I agree to PulseNet's <a href="#">Terms of Service</a> and <a
+                                href="#">Privacy Policy</a></div>
+                    </div>
+                    <span class="field-error" id="terms-err">You must accept the terms to continue</span>
+                </div>
+
+                <button class="submit-btn" onclick="handleSignup()">
+                    Create Account
+                    <svg viewBox="0 0 24 24">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                </button>
+
+                <div class="bottom-text">
+                    Already have an account? <a href="#" onclick="switchTab('signin');return false;">Sign in →</a>
+                </div>
+            </div>
+
+            <!-- SUCCESS -->
+            <div id="success-card" class="success-card">
+                <div class="success-icon">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                </div>
+                <h2>Account Created!</h2>
+                <p>Welcome to PulseNet. Your account is ready. Click below to sign in and access your dashboard.</p>
+                <a href="#" onclick="switchTab('signin');return false;">
+                    Go to Sign In
+                    <svg style="width:14px;height:14px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round"
+                        viewBox="0 0 24 24">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                </a>
+            </div>
+
+            <!-- SIGNIN FORM -->
+            <div id="form-signin" class="panel-content" style="display:none">
+                <div class="form-heading">
+                    <h1>Welcome back</h1>
+                    <p>Sign in to your PulseNet dashboard.</p>
+                </div>
+
+                <div class="social-row">
+                    <button class="social-btn" onclick="handleSocial()">
+                        Continue with OTP
+                    </button>
+
+                </div>
+
+                <div class="divider">
+                    <div class="divider-line"></div>
+                    <span class="divider-text">or sign in with email</span>
+                    <div class="divider-line"></div>
+                </div>
+
+                <div class="field-group">
+                    <div class="field">
+                        <label for="si-email">Email Address</label>
+                        <div class="input-wrap">
+                            <svg class="input-icon" viewBox="0 0 24 24">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            <input type="email" id="si-email" placeholder="your@email.com" autocomplete="email" />
+                        </div>
+                        <span class="field-error" id="si-email-err">Please enter a valid email</span>
+                    </div>
+
+                    <div class="field">
+                        <label for="si-password">Password</label>
+                        <div class="input-wrap password-wrap">
+                            <svg class="input-icon" viewBox="0 0 24 24">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                            </svg>
+                            <input type="password" id="si-password" placeholder="Your password"
+                                autocomplete="current-password" />
+                            <button class="pwd-toggle" type="button" onclick="togglePwd('si-password', this)"
+                                tabindex="-1">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                            </button>
+                        </div>
+                        <span class="field-error" id="si-pwd-err">Please enter your password</span>
+                    </div>
+
+                    <div style="display:flex;align-items:center;justify-content:space-between">
+                        <div class="checkbox-row" style="align-items:center">
+                            <div class="checkbox-wrap">
+                                <input type="checkbox" id="remember" />
+                                <div class="checkbox-custom" onclick="document.getElementById('remember').click()">
+                                    <svg viewBox="0 0 24 24">
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <span style="font-size:13px;color:var(--text2)">Remember me</span>
+                        </div>
+                        <a href="#" class="forgot-link">Forgot password?</a>
+                    </div>
+                </div>
+
+                <button class="submit-btn" onclick="handleSignin()">
+                    Sign In
+                    <svg viewBox="0 0 24 24">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                </button>
+
+                <div class="bottom-text">
+                    Don't have an account? <a href="#" onclick="switchTab('signup');return false;">Create one →</a>
+                </div>
+            </div>
+
+        </div><!-- /form-container -->
+    </div><!-- /right-panel -->
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const mode = params.get("mode");
+
+        // 🔥 auto switch tab
+        window.onload = () => {
+            if (mode === "signup") {
+                switchTab("signup");
+            } else {
+                switchTab("signin"); // default
+            }
+        };
+        // Theme init
+        (function () {
+            const stored = localStorage.getItem('pn-theme');
+            const dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme:dark)').matches;
+            if (dark) document.getElementById('html-root').classList.add('dark');
+            updateThemeIcon(dark);
+        })();
+
+        function toggleTheme() {
+            const html = document.getElementById('html-root');
+            const dark = html.classList.toggle('dark');
+            localStorage.setItem('pn-theme', dark ? 'dark' : 'light');
+            updateThemeIcon(dark);
+        }
+        function updateThemeIcon(dark) {
+            document.getElementById('theme-icon').innerHTML = dark
+                ? '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>'
+                : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+        }
+
+        function switchTab(tab) {
+            document.getElementById('tab-signup').classList.toggle('active', tab === 'signup');
+            document.getElementById('tab-signin').classList.toggle('active', tab === 'signin');
+            document.getElementById('form-signup').style.display = tab === 'signup' ? '' : 'none';
+            document.getElementById('success-card').style.display = 'none';
+            document.getElementById('success-card').classList.remove('show');
+            document.getElementById('form-signin').style.display = tab === 'signin' ? '' : 'none';
+        }
+
+        function togglePwd(id, btn) {
+            const inp = document.getElementById(id);
+            const isText = inp.type === 'text';
+            inp.type = isText ? 'password' : 'text';
+            btn.querySelector('svg').innerHTML = isText
+                ? '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>'
+                : '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
+        }
+
+        function checkStrength(val) {
+            const segs = [document.getElementById('s1'), document.getElementById('s2'), document.getElementById('s3'), document.getElementById('s4')];
+            const txt = document.getElementById('strength-text');
+            let score = 0;
+            if (val.length >= 8) score++;
+            if (/[A-Z]/.test(val)) score++;
+            if (/[0-9]/.test(val)) score++;
+            if (/[^A-Za-z0-9]/.test(val)) score++;
+            const colors = ['#e11d48', '#f59e0b', '#0c87ea', '#059669'];
+            const labels = ['Weak', 'Fair', 'Good', 'Strong'];
+            const labelColors = ['#e11d48', '#d97706', '#0c87ea', '#059669'];
+            segs.forEach((s, i) => {
+                s.style.background = i < score ? colors[score - 1] : 'var(--border2)';
+            });
+            if (val.length === 0) { txt.textContent = 'Enter a password'; txt.style.color = 'var(--text3)'; return; }
+            txt.textContent = labels[score - 1] || 'Too short';
+            txt.style.color = labelColors[score - 1] || '#e11d48';
+        }
+
+        function showErr(id, msg) { const el = document.getElementById(id); if (el) { el.textContent = msg; el.classList.add('show'); } }
+        function hideErr(id) { const el = document.getElementById(id); if (el) el.classList.remove('show'); }
+        function setErr(id, hasErr) { const inp = document.getElementById(id); if (inp) inp.classList.toggle('error', hasErr); }
+
+        async function handleSignup() {
+            let valid = true;
+
+            const fullname = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const role = document.querySelector('input[name="role"]:checked')?.value;
+            const phone = document.getElementById('phone')?.value || "";
+
+            // validation
+            if (!fullname || !email || password.length < 4) {
+                alert("Please fill all fields properly");
+                return;
+            }
+
+            try {
+                const res = await fetch("http://localhost:5000/api/signup", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        fullname,
+                        email,
+                        password,
+                        role,
+                        phone
+                    })
+                });
+                console.log({
+                    fullname,
+                    email,
+                    password,
+                    role,
+                    phone
+                });
+                const data = await res.json();
+
+                if (!res.ok) throw new Error(data.message);
+
+                alert("Account created successfully!");
+
+                switchTab("signin"); // 🔥 move to login
+
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        async function handleSignin() {
+            const email = document.getElementById('si-email').value.trim();
+            const password = document.getElementById('si-password').value;
+
+            if (!email || !password) {
+                alert("Enter email & password");
+                return;
+            }
+
+            try {
+                const res = await fetch("http://localhost:5000/api/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await res.json();
+                console.log("Login successful:", data);
+                if (!res.ok) throw new Error(data.message);
+
+                // 🔥 SAVE USER
+                localStorage.setItem("user", JSON.stringify(data));
+
+                // 🔥 GO TO REACT DASHBOARD
+                window.location.href = "/";
+
+
+            } catch (err) {
+                alert(err.message);
+            }
+        }
+
+        function handleSocial() {
+            alert('Social auth would connect to your OAuth provider. For demo purposes, use email signup.');
+        }
+    </script>
+</body>
+
+</html>
